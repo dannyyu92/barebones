@@ -52,6 +52,7 @@ PostgreSQL (9.4) on your local machine.
  
 License
 ---
-Barebones is copyright © 2015 Danny Yu.
-
+Barebones is copyright © 2015 Danny Yu.  
 It is free software, and may be redistributed under the terms specified in the [LICENSE] file.
+
+[LICENSE]: LICENSE
