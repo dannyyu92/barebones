@@ -6,7 +6,7 @@ gems and patterns that would be nice to have out of the box.
 
 Installation
 ---
-For now, just run ./bin/barebones <AppName>
+For now, just run ./bin/barebones [AppName]
 
 Gemfile
 ---
