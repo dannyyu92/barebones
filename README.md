@@ -2,7 +2,7 @@ Barebones
 ===
 Barebones is my personal base Rails application. After developing a
 couple of Rails applications, I thought that there were some common
-gems and patterns that would be nice to out of the box.
+gems and patterns that would be nice to have out of the box.
 
 Installation
 ---
