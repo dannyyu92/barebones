@@ -14,6 +14,12 @@ module Barebones
       File.expand_path("../../../templates", File.dirname(__FILE__))
     end
 
+    # Fall back to Rails default templates
+    def self.source_paths
+      paths = super
+      paths << Rails::Generators::AppGenerator.source_root
+    end
+
     # Look for custom builder class
     def get_builder_class
       Barebones::AppBuilder
