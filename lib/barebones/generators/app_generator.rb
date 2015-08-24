@@ -3,7 +3,6 @@ require 'rails/generators/rails/app/app_generator'
 module Barebones
   class AppGenerator < Rails::Generators::AppGenerator
     
-
     def finish_template
       super
     end
