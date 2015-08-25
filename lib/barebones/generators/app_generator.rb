@@ -5,8 +5,13 @@ module Barebones
     class_option :skip_bundle, type: :boolean, aliases: "-B", default: true,
       desc: "Don't run bundle install"
 
-    def finish_template
-      super
+    def customizations
+      invoke :setup_gemfile
+      #invoke :setup_environments
+    end
+
+    def setup_gemfile
+      build :set_ruby_version
     end
 
     protected

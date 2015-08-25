@@ -33,8 +33,6 @@ Barebones includes various preconfigured gems such as:
 
 ####Testing
 * Minitest Reporters
-* Mini Backtrace
-* Guard Minitest
 * Factory Girl Rails
 
 ####Authentication
