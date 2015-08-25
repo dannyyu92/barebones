@@ -2,7 +2,9 @@ require 'rails/generators/rails/app/app_generator'
 
 module Barebones
   class AppGenerator < Rails::Generators::AppGenerator
-    
+    class_option :skip_bundle, type: :boolean, aliases: "-B", default: true,
+      desc: "Don't run bundle install"
+
     def finish_template
       super
     end
