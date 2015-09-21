@@ -16,6 +16,9 @@ module Barebones
 
     def app
       super
+      keep_file "app/services"
+      keep_file "app/decorators"
+      keep_file "app/workers"
     end
 
     def config
