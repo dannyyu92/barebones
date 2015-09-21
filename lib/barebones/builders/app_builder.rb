@@ -11,7 +11,7 @@ module Barebones
     end
 
     def gitignore
-      super
+      template "barebones_gitignore", ".gitignore"
     end
 
     def app

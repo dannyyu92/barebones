@@ -1,0 +1,20 @@
+!.keep
+*.DS_Store
+*.swo
+*.swp
+/.bundle
+/coverage/*
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp/*
+*.*~
+
+# Ignore uploads from file management gems
+/public/system
+/public/uploads
+
+# Redis stores
+dump.rdb
