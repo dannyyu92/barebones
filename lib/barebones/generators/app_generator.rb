@@ -7,11 +7,16 @@ module Barebones
 
     def customizations
       invoke :setup_gemfile
+      invoke :setup_secrets
       #invoke :setup_environments
     end
 
     def setup_gemfile
       build :set_ruby_version
+    end
+
+    def setup_secrets
+      build :customize_secrets
     end
 
     protected

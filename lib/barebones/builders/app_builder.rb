@@ -31,12 +31,12 @@ module Barebones
         customize_application_rb
 
         template "environment.rb"
-        template "secrets.yml"
 
         directory "environments"
         directory "initializers"
         directory "locales"
       end
+
     end
 
     def database_yml
@@ -54,6 +54,10 @@ module Barebones
           "\n#{spaces(4)}# Autoload 'lib' folder\n"\
           "#{spaces(4)}config.autoload_paths << Rails.root.join('lib')\n"
       end
+    end
+
+    def customize_secrets
+      template "secrets.yml.erb", "config/secrets.yml"
     end
 
   end
