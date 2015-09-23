@@ -26,7 +26,7 @@ module Barebones
       empty_directory "config"
 
       inside "config" do
-        template "routes.rb"
+        #template "routes.rb"
         template "application.rb"
         customize_application_rb
 

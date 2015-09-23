@@ -7,12 +7,18 @@ module Barebones
 
     def customizations
       invoke :setup_gemfile
+      #invoke :setup_routes
       invoke :setup_secrets
       #invoke :setup_environments
     end
 
     def setup_gemfile
       build :set_ruby_version
+    end
+
+    def setup_routes
+      build :customize_routes
+      build :create_api_constraints
     end
 
     def setup_secrets
