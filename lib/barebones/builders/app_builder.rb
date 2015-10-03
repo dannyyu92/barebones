@@ -56,10 +56,6 @@ module Barebones
       end
     end
 
-    def customize_secrets
-      template "secrets.yml.erb", "config/secrets.yml"
-    end
-
     def customize_routes
       template "routes.rb", "config/routes.rb"
     end
@@ -77,6 +73,15 @@ module Barebones
       empty_directory "app/controllers/api/v1"
       template "api_application_controller.rb", "app/controllers/api/v1/application_controller.rb"
       template "configs_controller.rb", "app/controllers/api/v1/configs_controller.rb"
+    end
+
+    def customize_secrets
+      template "secrets.yml.erb", "config/secrets.yml"
+    end
+
+    def create_staging_environment
+      environment_path = "config/environments"
+      run "cp #{environment_path}/development.rb #{environment_path}/staging.rb"
     end
 
   end

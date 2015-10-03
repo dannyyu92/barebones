@@ -10,7 +10,7 @@ module Barebones
       invoke :setup_routes
       invoke :setup_api
       invoke :setup_secrets
-      #invoke :setup_environments
+      invoke :setup_environments
     end
 
     def setup_gemfile
@@ -29,6 +29,10 @@ module Barebones
 
     def setup_secrets
       build :customize_secrets
+    end
+
+    def setup_environments
+      build :create_staging_environment
     end
 
     protected
