@@ -1,0 +1,27 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: <%= app_name.parameterize.underscore %>_development
+  username: <%= app_name.parameterize.underscore %>_admin
+  password: password
+
+staging:
+  <<: *default
+  database: <%= app_name.parameterize.underscore %>_staging
+  username: <%= app_name.parameterize.underscore %>_admin
+  password: password
+
+production:
+  <<: *default
+  database: <%= app_name.parameterize.underscore %>_production
+  username: <%= app_name.parameterize.underscore %>_admin
+  password: password
+
+test:
+  <<: *default
+  database: <%= app_name.parameterize.underscore %>_test

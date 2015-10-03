@@ -38,10 +38,22 @@ Barebones includes various preconfigured gems such as:
 ####Authentication
 * Sorcery
 
+####API
+* JBuilder
+* oj
+* oj_mimic_json
+* multi_json
+
 Design Patterns
 ---
 * Services (Pre-made folder)
 * Decorator (Subclass of SimpleDelegator)
+
+API
+---
+* Routes
+* ApiConstraints
+* Configs/Ping endpoint
 
 Dependencies
 ---

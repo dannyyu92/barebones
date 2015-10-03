@@ -26,7 +26,7 @@ module Barebones
       empty_directory "config"
 
       inside "config" do
-        #template "routes.rb"
+        customize_routes
         template "application.rb"
         customize_application_rb
 
@@ -40,7 +40,7 @@ module Barebones
     end
 
     def database_yml
-      super
+      template "database.yml.erb", "config/database.yml"
     end
 
     # Custom
@@ -58,6 +58,25 @@ module Barebones
 
     def customize_secrets
       template "secrets.yml.erb", "config/secrets.yml"
+    end
+
+    def customize_routes
+      template "routes.rb", "config/routes.rb"
+    end
+
+    def setup_oj
+      template "multi_json.rb", "config/initializers/multi_json.rb"
+    end
+
+    def create_api_constraints
+      template "api_constraints.rb.erb", "lib/api_constraints.rb"
+    end
+
+    def create_api_v1_controllers
+      empty_directory "app/controllers/api"
+      empty_directory "app/controllers/api/v1"
+      template "api_application_controller.rb", "app/controllers/api/v1/application_controller.rb"
+      template "configs_controller.rb", "app/controllers/api/v1/configs_controller.rb"
     end
 
   end

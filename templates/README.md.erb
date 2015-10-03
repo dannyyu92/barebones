@@ -1,5 +1,18 @@
 # <%= app_name.humanize %>
 
-## Getting Started
+### Getting Started
 
+## Setting Up Postgresql
+`psql`  
+`CREATE ROLE <%= app_name.parameterize.underscore %>_admin`  
+`ALTER ROLE <%= app_name.parameterize.underscore %>_admin WITH LOGIN CREATEDB REPLICATION SUPERUSER;`  
+`rake db:migrate`  
+`rake db:setup`  
+
+## Setting Up The Server
+
+`bundle install`  
+`rake db:migrate db:setup`  
+
+## Running The Server
 Run `rails s -p [port#]` to start the server.

@@ -7,7 +7,8 @@ module Barebones
 
     def customizations
       invoke :setup_gemfile
-      #invoke :setup_routes
+      invoke :setup_routes
+      invoke :setup_api
       invoke :setup_secrets
       #invoke :setup_environments
     end
@@ -18,7 +19,12 @@ module Barebones
 
     def setup_routes
       build :customize_routes
+    end
+
+    def setup_api
+      build :setup_oj
       build :create_api_constraints
+      build :create_api_v1_controllers
     end
 
     def setup_secrets
