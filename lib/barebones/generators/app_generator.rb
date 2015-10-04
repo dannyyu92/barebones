@@ -6,14 +6,14 @@ module Barebones
       desc: "Don't run bundle install"
 
     def customizations
-      invoke :setup_gemfile
+      invoke :setup_ruby
       invoke :setup_routes
       invoke :setup_api
       invoke :setup_secrets
       invoke :setup_environments
     end
 
-    def setup_gemfile
+    def setup_ruby
       build :set_ruby_version
     end
 
@@ -24,7 +24,9 @@ module Barebones
     def setup_api
       build :setup_oj
       build :create_api_constraints
-      build :create_api_v1_controllers
+      build :create_api_v1_defaults
+      build :create_api_configurations
+      build :create_api_layouts
     end
 
     def setup_secrets

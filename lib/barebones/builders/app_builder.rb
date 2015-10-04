@@ -68,11 +68,25 @@ module Barebones
       template "api_constraints.rb.erb", "lib/api_constraints.rb"
     end
 
-    def create_api_v1_controllers
+    def create_api_v1_defaults
       empty_directory "app/controllers/api"
       empty_directory "app/controllers/api/v1"
       template "api_application_controller.rb", "app/controllers/api/v1/application_controller.rb"
+      template "api_defaults_concern.rb", "app/controllers/concerns/api_defaults.rb"
+    end
+
+    def create_api_configurations
+      empty_directory "app/views/api/v1/configs"
       template "configs_controller.rb", "app/controllers/api/v1/configs_controller.rb"
+      template "config_ping.json.jbuilder", "app/views/api/v1/configs/ping.json.jbuilder"
+    end
+
+    def create_api_layouts
+      empty_directory "app/views/layouts/api/v1"
+      template "layout.json.jbuilder", "app/views/layouts/api/v1/application.json.jbuilder"
+      empty_directory "app/views/api/defaults"
+      create_file "app/views/api/defaults/success.json.jbuilder"
+      create_file "app/views/api/defaults/fail.json.jbuilder"
     end
 
     def customize_secrets
