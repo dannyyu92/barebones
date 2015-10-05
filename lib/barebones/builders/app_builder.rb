@@ -93,6 +93,13 @@ module Barebones
       template "secrets.yml.erb", "config/secrets.yml"
     end
 
+    def raise_on_delivery_errors
+      file = "config/environments/development.rb"
+      gsub_file file, "config.action_mailer.raise_delivery_errors = false" do |match|
+        "config.action_mailer.raise_delivery_errors = true"
+      end
+    end
+
     def create_staging_environment
       environment_path = "config/environments"
       run "cp #{environment_path}/development.rb #{environment_path}/staging.rb"
