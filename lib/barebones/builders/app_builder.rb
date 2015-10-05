@@ -19,6 +19,8 @@ module Barebones
       super
       keep_file "app/services"
       keep_file "app/decorators"
+      template  "barebones_decorator.rb.erb", 
+        "app/decorators/#{app_name.parameterize.underscore}_decorator.rb"
       keep_file "app/workers"
     end
 

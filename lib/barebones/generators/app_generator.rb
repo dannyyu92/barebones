@@ -5,7 +5,7 @@ module Barebones
 
     class_option :skip_bundle, type: :boolean, aliases: "-B", default: true,
       desc: "Don't run bundle install"
-      
+
     class_option :with_api, type: :boolean, default: true, 
       desc: "Add an API"
 
@@ -82,6 +82,11 @@ module Barebones
     # Look for custom builder class
     def get_builder_class
       Barebones::AppBuilder
+    end
+
+    # Custom
+    def str_to_class(klass_str)
+      klass_str.gsub(/\s/,"_").camelize(:upper)
     end
     
   end
