@@ -51,12 +51,12 @@ Design Patterns
 API
 ---
 * Routes
-* ApiConstraints
-* Configs/Ping endpoint
+* Api Constraints (Version control)
+* Configurations/Ping endpoint
 
 Dependencies
 ---
-Barebones requires the latest version of Ruby (2.2.2), Rails (4.2.3), and
+Barebones requires the latest version of Ruby (2.2.3), Rails (4.2.3), and
 PostgreSQL (9.4) on your local machine.
  
 License
