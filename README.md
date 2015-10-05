@@ -22,7 +22,6 @@ Barebones includes various preconfigured gems such as:
 
 ####Database
 * Postgres
-* Mongoid
 
 ####Dev/Testing
 * Byebug
