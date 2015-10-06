@@ -10,49 +10,49 @@ For now, just run ./bin/barebones [AppName]
 
 Gemfile
 ---
-Barebones includes various preconfigured gems such as:
+Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems such as:
 ####File Uploading
-* Carrierwave
-* Fog (Configured for both Google Cloud and AWS S3)
-* Mini Magick
+* [Carrierwave](https://github.com/carrierwaveuploader/carrierwave) for file uploading
+* [Fog](https://github.com/fog/fog) for AWS/Google cloud storage
+* [MiniMagick](https://github.com/minimagick/minimagick) for image cropping/resizing and all that good stuff
 
 ####Background Processing
-* Resque
-* Resque Scheduler
+* [Resque](https://github.com/resque/resque) for background workers
+* [Resque-Scheduler](https://github.com/resque/resque-scheduler) for queueing workers in the future
 
 ####Database
-* Postgres
+* [Postgres](https://rubygems.org/gems/pg/versions/0.18.3)
 
 ####Dev/Testing
-* Byebug
-* Spring
-* Web console
-* Quiet Assets
-* Awesome Print
+* [Byebug](https://github.com/deivid-rodriguez/byebug) for debugging
+* [Pry Byebug](https://github.com/deivid-rodriguez/pry-byebug) for debugging background jobs
+* [Web Console](https://github.com/rails/web-console) for debugging views
+* [Quiet Assets](https://github.com/evrone/quiet_assets) for muting the Rails asset pipeline log
+* [Awesome Print](https://github.com/michaeldv/awesome_print) for pretty printing command line objects
 
 ####Testing
-* Minitest Reporters
-* Factory Girl Rails
+* [Minitest](https://github.com/blowmage/minitest-rails) for TDD/BDD
+* [Minitest Reporters](https://github.com/kern/minitest-reporters) for customizable Minitest output formats
 
 ####Authentication
-* Sorcery
+* [Sorcery](https://github.com/NoamB/sorcery) for user authentication
 
 ####API
-* JBuilder
-* oj
-* oj_mimic_json
-* multi_json
+* [Jbuilder](https://github.com/rails/jbuilder) for building JSON structures
+* [oj](https://github.com/ohler55/oj) for faster JSON parsing (and a faster Jbuilder)
+* [oj_mimic_json](https://github.com/ohler55/oj_mimic_json)
+* [MultiJSON](https://github.com/intridea/multi_json)
 
 Design Patterns
 ---
 * Services (Pre-made folder)
-* Decorator (Subclass of SimpleDelegator)
+* [Custom Decorator Class](templates/barebones_decorator.rb.erb) (A custom subclass of SimpleDelegator)
 
 API
 ---
-* Routes
-* Api Constraints (Version control)
-* Configurations/Ping endpoint
+* [Routes](templates/Gemfile.erb) with API subdomain and version namespacing
+* [ApiConstraints](templates/Gemfile.erb) for API version control
+* [Configurations/Ping endpoint](templates/configs_controller.rb) to test that the API works :)
 
 Dependencies
 ---

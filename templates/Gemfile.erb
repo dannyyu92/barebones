@@ -19,7 +19,6 @@ group :development, :test do
   gem "awesome_print"
   gem "minitest-rails"
   gem "minitest-reporters"
-  gem "factory_girl_rails", "~> 4.0"
 end
 
 # File Uploads
@@ -28,7 +27,7 @@ gem "mini_magick"
 gem "carrierwave"
 
 # Background Processing
-gem "resque"
+gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
 gem "resque-scheduler"
 
 # Database
