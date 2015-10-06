@@ -6,13 +6,12 @@ module Barebones
     class_option :skip_bundle, type: :boolean, aliases: "-B", default: true,
       desc: "Don't run bundle install"
 
-    class_option :with_api, type: :boolean, default: true, 
-      desc: "Add an API"
+    class_option :skip_api, type: :boolean, default: false, 
+      desc: "Skip creating an API. Default is false."
 
     def customizations
       say "Invoking customizations..."
       invoke :setup_ruby
-      invoke :setup_routes
       invoke :setup_api
       invoke :setup_secrets
       invoke :setup_environments
@@ -23,14 +22,10 @@ module Barebones
       build :set_ruby_version
     end
 
-    def setup_routes
-      say "Customizing routes..."
-      build :customize_routes
-    end
-
     def setup_api
       if options[:with_api]
         say "Setting up an API..."
+        build :customize_routes
         build :setup_oj
         build :create_api_constraints
         build :create_api_v1_defaults
