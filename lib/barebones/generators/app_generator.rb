@@ -9,6 +9,12 @@ module Barebones
     class_option :skip_api, type: :boolean, default: false, 
       desc: "Skip creating an API. Default is false."
 
+    class_option :skip_sorcery, type: :boolean, default: false,
+      desc: "Skip using sorcery for user authentication. Default is false."
+
+    class_option :skip_minitest, type: :boolean, default: false,
+      desc: "Skip using Minitest. Default is false."
+
     def customizations
       say "Invoking customizations..."
       invoke :setup_ruby

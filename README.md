@@ -8,6 +8,15 @@ Installation
 ---
 For now, just run ./bin/barebones [AppName]
 
+#### Flags
+If you don't like using any of the below gems for whatever reason, you can skip them:
+* --skip-api true
+* --skip-sorcery true
+* --skip-minitest true
+
+For example:
+`./bin/barebones [AppName] --skip-api true --skip-sorcery true`
+
 Gemfile
 ---
 Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems such as:

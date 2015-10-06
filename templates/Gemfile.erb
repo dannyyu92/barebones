@@ -17,8 +17,10 @@ group :development, :test do
   gem "spring", "1.3.6"
   gem "quiet_assets"
   gem "awesome_print"
+<% unless options[:skip_minitest] %>
   gem "minitest-rails"
   gem "minitest-reporters"
+<% end %>
 end
 
 # File Uploads
@@ -33,8 +35,10 @@ gem "resque-scheduler"
 # Database
 gem "pg", "~> 0.18.2"
 
+<% unless options[:skip_sorcery] %>
 # Authentication
 gem "sorcery"
+<% end %>
 
 # Faster JSON Parsing
 gem "oj"
