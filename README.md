@@ -10,12 +10,12 @@ For now, just run ./bin/barebones [AppName]
 
 #### Flags
 If you don't like using any of the below gems for whatever reason, you can skip them:
-* --skip-api true
-* --skip-sorcery true
-* --skip-minitest true
+* --skip-api
+* --skip-sorcery
+* --skip-minitest
 
 For example:
-`./bin/barebones [AppName] --skip-api true --skip-sorcery true`
+`./bin/barebones [AppName] --skip-api --skip-sorcery`
 
 Gemfile
 ---
