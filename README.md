@@ -51,7 +51,7 @@ Design Patterns
 API
 ---
 * [Routes](templates/Gemfile.erb) with API subdomain and version namespacing
-* [ApiConstraints](templates/Gemfile.erb) for API version control
+* [ApiConstraints](templates/api_constraints.rb.erb) for API version control
 * [Configurations/Ping endpoint](templates/configs_controller.rb) to test that the API works :)
 
 Dependencies
