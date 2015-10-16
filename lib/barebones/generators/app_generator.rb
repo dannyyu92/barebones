@@ -21,6 +21,8 @@ module Barebones
       invoke :setup_api
       invoke :setup_secrets
       invoke :setup_environments
+      invoke :setup_gems
+      invoke :outro
     end
 
     def setup_ruby
@@ -63,8 +65,31 @@ module Barebones
     def setup_production_environment
     end
 
+    def setup_gems
+      invoke :setup_minitest
+      #invoke :setup_sorcery
+      #invoke :setup_resque
+    end
+
+    def setup_minitest
+      unless options[:skip_minitest]
+        say "Setting up Minitest gem..."
+        build :configure_minitest
+      end
+    end
+
     def outro
+      unless options[:skip_minitest]
+        invoke :minitest_setup_reminder
+      end
       say "\e[34mSweet, we're done!\e[0m"
+    end
+
+    def minitest_setup_reminder
+      say "========================================\n"\
+        "Remember to run `rails g minitest:install` \n"\
+        "and to set up Minitest-Reporters!\n"\
+        "========================================\n"
     end
 
     protected

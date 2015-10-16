@@ -107,5 +107,16 @@ module Barebones
       run "cp #{environment_path}/development.rb #{environment_path}/staging.rb"
     end
 
+    def configure_minitest
+      autoload_paths_line = "config.autoload_paths << Rails.root.join('lib')\n"
+      inject_into_file "config/application.rb", 
+        after: autoload_paths_line do
+          "\n#{spaces(4)}# Auto generate test files\n"\
+          "#{spaces(4)}config.generators do |g|\n"\
+          "#{spaces(6)}g.test_framework :minitest, spec: false, fixture: false\n"\
+          "#{spaces(4)}end\n"
+      end
+    end    
+
   end
 end
