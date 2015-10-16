@@ -82,17 +82,17 @@ module Barebones
     end
 
     def outro
-      unless options[:skip_minitest]
-        invoke :minitest_setup_reminder
-      end
+      invoke :minitest_setup_reminder
       say "\e[34mSweet, we're done!\e[0m"
     end
 
     def minitest_setup_reminder
-      say "========================================\n"\
-        "Remember to run `rails g minitest:install` \n"\
-        "and to set up Minitest-Reporters!\n"\
-        "========================================\n"
+      unless options[:skip_minitest]
+        say "========================================\n"\
+          "Remember to run `rails g minitest:install` \n"\
+          "and to set up Minitest-Reporters!\n"\
+          "========================================\n"
+      end
     end
 
     protected
