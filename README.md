@@ -9,7 +9,7 @@ Installation
 For now, just run ./bin/barebones [AppName]
 
 #### Flags
-If you don't like using any of the below gems for whatever reason, you can skip them:
+If you don't like using any of the below gems or configurations for whatever reason, you can skip them:
 * --skip-api
 * --skip-sorcery
 * --skip-minitest
