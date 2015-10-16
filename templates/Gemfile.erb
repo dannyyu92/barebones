@@ -28,9 +28,11 @@ gem "fog"
 gem "mini_magick"
 gem "carrierwave"
 
+<% unless options[:skip_resque] %>
 # Background Processing
 gem "resque"
 gem "resque-scheduler"
+<% end %>
 
 # Database
 gem "pg", "~> 0.18.2"

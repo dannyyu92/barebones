@@ -9,6 +9,7 @@ module Barebones
 
     def gemfile
       template "Gemfile.erb", "Gemfile"
+      replace_regex_in_file("Gemfile", /\n{2,}/, "\n\n")
     end
 
     def gitignore

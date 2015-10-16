@@ -9,6 +9,9 @@ module Barebones
     class_option :skip_api, type: :boolean, default: false, 
       desc: "Skip creating an API. Default is false."
 
+    class_option :skip_resque, type: :boolean, default: false,
+      desc: "Skip using Resque. Default is false."
+
     class_option :skip_sorcery, type: :boolean, default: false,
       desc: "Skip using sorcery for user authentication. Default is false."
 
