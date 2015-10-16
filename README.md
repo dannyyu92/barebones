@@ -13,6 +13,8 @@ If you don't like using any of the below gems or configurations for whatever rea
 * --skip-api
 * --skip-sorcery
 * --skip-minitest
+* --skip-resque
+* --skip-carrierwave
 
 For example:
 `./bin/barebones [AppName] --skip-api --skip-sorcery`
