@@ -23,10 +23,12 @@ group :development, :test do
 <% end %>
 end
 
+<% unless options[:skip_carrierwave] %>
 # File Uploads
 gem "fog"
 gem "mini_magick"
 gem "carrierwave"
+<% end %>
 
 <% unless options[:skip_resque] %>
 # Background Processing

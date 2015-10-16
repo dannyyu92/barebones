@@ -13,10 +13,13 @@ module Barebones
       desc: "Skip using Resque. Default is false."
 
     class_option :skip_sorcery, type: :boolean, default: false,
-      desc: "Skip using sorcery for user authentication. Default is false."
+      desc: "Skip using Sorcery for user authentication. Default is false."
 
     class_option :skip_minitest, type: :boolean, default: false,
       desc: "Skip using Minitest. Default is false."
+
+    class_option :skip_carrierwave, type: :boolean, default: false,
+      desc: "Skip using Carrierwave. Default is false."
 
     def customizations
       say "Invoking customizations..."
