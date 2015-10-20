@@ -75,6 +75,7 @@ module Barebones
       invoke :setup_minitest
       #invoke :setup_sorcery
       invoke :setup_resque
+      invoke :setup_carrierwave
     end
 
     def setup_minitest
@@ -92,6 +93,13 @@ module Barebones
         build :configure_resque
         build :create_test_job
         build :create_resque_rake_task
+      end
+    end
+
+    def setup_carrierwave
+      unless options[:setup_carrierwave]
+        say "Setting up Carrierwave gem..."
+        build :configure_carrierwave
       end
     end
 

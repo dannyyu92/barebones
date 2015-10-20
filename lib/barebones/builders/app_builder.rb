@@ -144,5 +144,9 @@ module Barebones
       template "resque.rake", "lib/tasks/resque.rake"
     end
 
+    def configure_carrierwave
+      template "carrierwave.rb", "config/initializers/carrierwave.rb"
+    end
+
   end
 end
