@@ -1,4 +1,5 @@
 .DS_Store
+*.gem
 
 # TODO: Remove this
 # Temporary project I'm generating
