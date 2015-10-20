@@ -74,7 +74,7 @@ module Barebones
     def setup_gems
       invoke :setup_minitest
       #invoke :setup_sorcery
-      #invoke :setup_resque
+      invoke :setup_resque
     end
 
     def setup_minitest
@@ -84,17 +84,40 @@ module Barebones
       end
     end
 
+    def setup_resque
+      unless options[:skip_resque]
+        say "Setting up Resque/Redis gems..."
+        build :configure_active_job
+        build :configure_redis
+        build :configure_resque
+        build :create_test_job
+        build :create_resque_rake_task
+      end
+    end
+
     def outro
       invoke :minitest_setup_reminder
+      invoke :resque_web_reminder
       say "\e[34mSweet, we're done!\e[0m"
     end
 
     def minitest_setup_reminder
       unless options[:skip_minitest]
-        say "========================================\n"\
+        say "==========================================\n"\
           "Remember to run `rails g minitest:install` \n"\
           "and to set up Minitest-Reporters!\n"\
-          "========================================\n"
+          "==========================================\n"
+      end
+    end
+
+    def resque_web_reminder
+      unless options[:skip_resque]
+        say "==============================================\n"\
+          "If you'd like to have the resque-web dashboard, \n"\
+          "you should add the following to your routes: \n"\
+          "`require 'resque/scheduler/server'`\n"\
+          "`mount Resque::Server.new, :at => '/resque'`\n"\
+          "==============================================\n"
       end
     end
 

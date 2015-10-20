@@ -119,5 +119,30 @@ module Barebones
       end
     end    
 
+    def configure_active_job
+      autoload_paths_line = "config.autoload_paths << Rails.root.join('lib')\n"
+      inject_into_file "config/application.rb", 
+        after: autoload_paths_line do
+          "\n#{spaces(4)}# Set ActiveJob to use Resque\n"\
+          "#{spaces(4)}config.active_job.queue_adapter = :resque\n"
+      end
+    end
+
+    def configure_redis
+      template "redis.rb", "config/initializers/redis.rb"
+    end
+
+    def configure_resque
+      template "resque.rb", "config/initializers/resque.rb"
+    end
+
+    def create_test_job
+      template "test_job.rb", "app/workers/test_job.rb"
+    end
+
+    def create_resque_rake_task
+      template "resque.rake", "lib/tasks/resque.rake"
+    end
+
   end
 end
