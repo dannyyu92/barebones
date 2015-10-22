@@ -1,5 +1,6 @@
 Barebones
 ===
+[![Gem Version](https://badge.fury.io/rb/barebones.svg)](https://badge.fury.io/rb/barebones)  
 Barebones is my personal base Rails application. After developing a
 couple of Rails applications, I thought that there were some common
 gems and patterns that would be nice to have out of the box.
