@@ -8,10 +8,12 @@ gems and patterns that would be nice to have out of the box.
 Installation
 ---
 Install the gem:  
-`gem install barebones`
+
+    gem install barebones
 
 Then run:  
-`barebones [AppName]`
+
+    barebones [AppName]
 
 #### Flags
 If you don't like using any of the below gems or configurations for whatever reason, you can skip them:
@@ -22,7 +24,8 @@ If you don't like using any of the below gems or configurations for whatever rea
 * --skip-carrierwave
 
 For example:
-`barebones [AppName] --skip-api --skip-sorcery`
+
+    barebones [AppName] --skip-api --skip-sorcery
 
 Gemfile
 ---
