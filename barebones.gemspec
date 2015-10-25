@@ -3,7 +3,7 @@ require "date"
 
 Gem::Specification.new do |s|
   s.name        = "barebones"
-  s.version     = "0.1.2"
+  s.version     = "0.1.3"
   s.date        = Date.today.to_s
   s.licenses    = ['MIT']
   s.summary     = "Rails template generator"

@@ -37,7 +37,7 @@ module Barebones
     end
 
     def setup_api
-      if options[:with_api]
+      unless options[:skip_api]
         say "Setting up an API..."
         build :customize_routes
         build :setup_oj
