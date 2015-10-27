@@ -8,12 +8,13 @@
 #   config.fog_directory = Rails.application.secrets.cw_bucket
 # end
 
-CarrierWave.configure do |config|
-  config.fog_credentials = {
-    :provider               => 'AWS',
-    :aws_access_key_id      => Rails.application.secrets.cw_access_key_id,     # required
-    :aws_secret_access_key  => Rails.application.secrets.cw_secret_access_key, # required
-    #:region                 => Rails.application.secrets.cw_region            # optional, defaults to 'us-east-1'
-  }
-  config.fog_directory  = Rails.application.secrets.cw_bucket                  # required
-end
+# Uncomment for Amazon AWS
+# CarrierWave.configure do |config|
+#   config.fog_credentials = {
+#     :provider               => 'AWS',
+#     :aws_access_key_id      => Rails.application.secrets.cw_access_key_id,     # required
+#     :aws_secret_access_key  => Rails.application.secrets.cw_secret_access_key, # required
+#     #:region                 => Rails.application.secrets.cw_region            # optional, defaults to 'us-east-1'
+#   }
+#   config.fog_directory  = Rails.application.secrets.cw_bucket                  # required
+# end
