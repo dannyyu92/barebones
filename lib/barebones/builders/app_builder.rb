@@ -117,6 +117,18 @@ module Barebones
           "#{spaces(6)}g.test_framework :minitest, spec: false, fixture: false\n"\
           "#{spaces(4)}end\n"
       end
+
+      last_require = "require 'rails/test_help'\n"
+      inject_into_file "test/test_helper.rb",
+        after: last_require do
+          "require 'minitest/reporters'\n"\
+          "Minitest::Reporters.use!(\n"\
+          "#{spaces(2)}Minitest::Reporters::DefaultReporter.new,\n"\
+          "#{spaces(2)}ENV,\n"\
+          "#{spaces(2)}Minitest.backtrace_filter\n"\
+          ")\n"
+      end
+        
     end    
 
     def configure_active_job
