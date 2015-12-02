@@ -13,5 +13,9 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  <% unless options[:skip_resque] %>
+  # Resque Dashboard
+  require 'resque/scheduler/server'
+  mount Resque::Server.new, :at => '/resque'
+  <% end %>
 end

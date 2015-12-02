@@ -24,6 +24,8 @@ module Barebones
     def customizations
       say "Invoking customizations..."
       invoke :setup_ruby
+      invoke :setup_routes
+      invoke :configure_app
       invoke :setup_api
       invoke :setup_secrets
       invoke :setup_environments
@@ -34,6 +36,16 @@ module Barebones
     def setup_ruby
       say "Setting ruby version..."
       build :set_ruby_version
+    end
+
+    def setup_routes
+      say "Setting up custom routes..."
+      build :customize_routes
+    end
+
+    def configure_app
+      say "Configuring application..."
+      build :setup_autoload_paths
     end
 
     def setup_api
@@ -104,33 +116,11 @@ module Barebones
     end
 
     def outro
-      invoke :minitest_setup_reminder
-      invoke :resque_web_reminder
       say "\e[34mSweet, we're done!\e[0m"
     end
 
-    def minitest_setup_reminder
-      unless options[:skip_minitest]
-        say "==========================================\n"\
-          "Remember to run `rails g minitest:install` \n"\
-          "and to set up Minitest-Reporters!\n"\
-          "==========================================\n"
-      end
-    end
-
-    def resque_web_reminder
-      unless options[:skip_resque]
-        say "==============================================\n"\
-          "If you'd like to have the resque-web dashboard, \n"\
-          "you should add the following to your routes: \n"\
-          "`require 'resque/scheduler/server'`\n"\
-          "`mount Resque::Server.new, :at => '/resque'`\n"\
-          "==============================================\n"
-      end
-    end
-
     protected
-
+    
     # Supply Thor with template root path
     def self.source_root
       File.expand_path("../../../templates", File.dirname(__FILE__))

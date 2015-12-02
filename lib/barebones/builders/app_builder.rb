@@ -26,20 +26,7 @@ module Barebones
     end
 
     def config
-      empty_directory "config"
-
-      inside "config" do
-        customize_routes
-        template "application.rb"
-        customize_application_rb
-
-        template "environment.rb"
-
-        directory "environments"
-        directory "initializers"
-        directory "locales"
-      end
-
+      super
     end
 
     def database_yml
@@ -51,16 +38,16 @@ module Barebones
       create_file ".ruby-version", "#{Barebones::RUBY_VERSION}"
     end
 
-    def customize_application_rb
-      inject_into_file "application.rb", 
+    def customize_routes
+      template "routes.rb.erb", "config/routes.rb", force: true
+    end
+
+    def setup_autoload_paths
+      inject_into_file "config/application.rb", 
         after: "config.active_record.raise_in_transactional_callbacks = true\n" do
           "\n#{spaces(4)}# Autoload 'lib' folder\n"\
           "#{spaces(4)}config.autoload_paths << Rails.root.join('lib')\n"
       end
-    end
-
-    def customize_routes
-      template "routes.rb", "config/routes.rb"
     end
 
     def setup_oj
@@ -93,7 +80,7 @@ module Barebones
     end
 
     def customize_secrets
-      template "secrets.yml.erb", "config/secrets.yml"
+      template "secrets.yml.erb", "config/secrets.yml", force: true
     end
 
     def raise_on_delivery_errors
@@ -114,7 +101,7 @@ module Barebones
         after: autoload_paths_line do
           "\n#{spaces(4)}# Auto generate test files\n"\
           "#{spaces(4)}config.generators do |g|\n"\
-          "#{spaces(6)}g.test_framework :minitest, spec: false, fixture: false\n"\
+          "#{spaces(6)}g.test_framework :minitest, spec: true, fixture: false\n"\
           "#{spaces(4)}end\n"
       end
 
