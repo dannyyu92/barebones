@@ -24,7 +24,7 @@ If you don't like using any of the below gems or configurations for whatever rea
 
 For example:
 
-    barebones [AppName] --skip-api --skip-sorcery
+    barebones [AppName] --skip-api --skip-minitest
 
 #Gemfile
 Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems such as:
