@@ -43,7 +43,7 @@ module Barebones
       inject_into_file "config/application.rb", 
         before: application_class_end_line do
           "\n#{spaces(4)}# Autoload 'lib' folder\n"\
-          "#{spaces(4)}config.autoload_paths += Dir['\#{config.root}/lib/**/']\n"
+          "#{spaces(4)}config.autoload_paths += Dir[\"\#{config.root}/lib/**/\"]\n"
       end
     end
 
