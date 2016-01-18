@@ -128,6 +128,7 @@ module Barebones
           "require 'mocha/mini_test'\n"\
           "# Require all support helpers\n"\
           "Dir[Rails.root.join('test/support/**/*.rb')].each { |f| require f }\n"\
+          "\n"\
           "Minitest::Reporters.use!(\n"\
           "#{spaces(2)}Minitest::Reporters::DefaultReporter.new,\n"\
           "#{spaces(2)}ENV,\n"\
