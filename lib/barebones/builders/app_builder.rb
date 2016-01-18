@@ -43,8 +43,9 @@ module Barebones
     end
 
     def setup_autoload_paths
+      application_class_end_line = "#{spaces(2)}end\nend"
       inject_into_file "config/application.rb", 
-        after: "config.active_record.raise_in_transactional_callbacks = true\n" do
+        before: application_class_end_line do
           "\n#{spaces(4)}# Autoload 'lib' folder\n"\
           "#{spaces(4)}config.autoload_paths << Rails.root.join('lib')\n"
       end
@@ -95,7 +96,16 @@ module Barebones
       run "cp #{environment_path}/development.rb #{environment_path}/staging.rb"
     end
 
-    def setup_factory_girl
+    def configure_factory_girl
+      application_class_end_line = "#{spaces(2)}end\nend"
+      inject_into_file "config/application.rb", 
+        before: application_class_end_line do
+          "\n#{spaces(4)}# Generate Factories instead of Fixtures\n"\
+          "#{spaces(4)}config.generators do |g|\n"\
+          "#{spaces(6)}g.factory_girl true\n"\
+          "#{spaces(4)}end\n"
+      end
+
       class_end_line = "end\n"
       inject_into_file "test/test_helper.rb",
         after: class_end_line do
@@ -111,9 +121,9 @@ module Barebones
     end
 
     def configure_minitest
-      autoload_paths_line = "config.autoload_paths << Rails.root.join('lib')\n"
+      class_end_line = "#{spaces(2)}end\nend"
       inject_into_file "config/application.rb", 
-        after: autoload_paths_line do
+        before: class_end_line do
           "\n#{spaces(4)}# Auto generate test files\n"\
           "#{spaces(4)}config.generators do |g|\n"\
           "#{spaces(6)}g.test_framework :minitest, spec: true, fixture: false\n"\
@@ -139,9 +149,9 @@ module Barebones
     end    
 
     def configure_active_job
-      autoload_paths_line = "config.autoload_paths << Rails.root.join('lib')\n"
+      application_class_end_line = "#{spaces(2)}end\nend"
       inject_into_file "config/application.rb", 
-        after: autoload_paths_line do
+        before: application_class_end_line do
           "\n#{spaces(4)}# Set ActiveJob to use Resque\n"\
           "#{spaces(4)}config.active_job.queue_adapter = :resque\n"
       end
