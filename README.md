@@ -6,7 +6,6 @@ couple of Rails applications, I thought that there were some common
 gems and patterns that would be nice to have out of the box.
 
 #Installation
----
 Install the gem:  
 
     gem install barebones
@@ -28,7 +27,6 @@ For example:
     barebones [AppName] --skip-api --skip-sorcery
 
 #Gemfile
----
 Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems such as:
 ##File Uploading
 * [Carrierwave](https://github.com/carrierwaveuploader/carrierwave) for file uploading
@@ -60,23 +58,19 @@ Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems 
 * [MultiJSON](https://github.com/intridea/multi_json)
 
 ##Design Patterns
----
 * Services (Pre-made folder)
 * [Custom Decorator Class](templates/barebones_decorator.rb.erb) (A custom subclass of SimpleDelegator)
 
 ##API
----
 * [Routes](templates/Gemfile.erb) with API subdomain and version namespacing
 * [ApiConstraints](templates/api_constraints.rb.erb) for API version control
 * [Configurations/Ping endpoint](templates/configs_controller.rb) to test that the API works :)
 
 #Dependencies
----
 Barebones requires the latest version of Ruby (2.2.3), Rails (4.2.3), and
 PostgreSQL (9.4) on your local machine.
  
 #License
----
 Barebones is copyright © 2015 Danny Yu.  
 It is free software, and may be redistributed under the terms specified in the [LICENSE] file.
 
