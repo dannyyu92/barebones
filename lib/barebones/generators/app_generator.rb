@@ -18,6 +18,9 @@ module Barebones
     class_option :skip_minitest, type: :boolean, default: false,
       desc: "Skip using Minitest. Default is false."
 
+    class_option :skip_factory_girl, type: :boolean, default: false,
+      desc: "Skip using Factory Girl. Default is false."
+
     class_option :skip_carrierwave, type: :boolean, default: false,
       desc: "Skip using Carrierwave. Default is false."
 
@@ -86,7 +89,7 @@ module Barebones
     def setup_gems
       invoke :setup_minitest
       invoke :setup_factory_girl
-      #invoke :setup_sorcery
+
       invoke :setup_resque
       invoke :setup_carrierwave
     end

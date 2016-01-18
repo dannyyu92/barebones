@@ -22,9 +22,11 @@ group :development, :test do
   gem "minitest-reporters"
   gem "minitest-around"
   gem "mocha"
-<% end %>
-  gem "factory_girl_rails", "~> 4.0"
   gem "database_cleaner"
+<% end %>
+<% unless options[:skip_factory_girl] %>
+  gem "factory_girl_rails", "~> 4.0"
+<% end %>
 end
 
 <% unless options[:skip_carrierwave] %>
