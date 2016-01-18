@@ -38,17 +38,17 @@ module Barebones
       create_file ".ruby-version", "#{Barebones::RUBY_VERSION}"
     end
 
-    def customize_routes
-      template "routes.rb.erb", "config/routes.rb", force: true
-    end
-
     def setup_autoload_paths
       application_class_end_line = "#{spaces(2)}end\nend"
       inject_into_file "config/application.rb", 
         before: application_class_end_line do
           "\n#{spaces(4)}# Autoload 'lib' folder\n"\
-          "#{spaces(4)}config.autoload_paths += Dir['#{config.root}/lib/**/']\n"
+          "#{spaces(4)}config.autoload_paths += Dir['\#{config.root}/lib/**/']\n"
       end
+    end
+
+    def customize_routes
+      template "routes.rb.erb", "config/routes.rb", force: true
     end
 
     def setup_oj

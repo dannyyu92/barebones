@@ -24,8 +24,8 @@ module Barebones
     def customizations
       say "Invoking customizations..."
       invoke :setup_ruby
-      invoke :setup_routes
       invoke :configure_app
+      invoke :setup_routes
       invoke :setup_api
       invoke :setup_secrets
       invoke :setup_environments
@@ -51,7 +51,6 @@ module Barebones
     def setup_api
       unless options[:skip_api]
         say "Setting up an API..."
-        build :customize_routes
         build :setup_oj
         build :create_api_constraints
         build :create_api_v1_defaults
