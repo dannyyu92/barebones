@@ -12,9 +12,6 @@ module Barebones
     class_option :skip_resque, type: :boolean, default: false,
       desc: "Skip using Resque. Default is false."
 
-    class_option :skip_sorcery, type: :boolean, default: false,
-      desc: "Skip using Sorcery for user authentication. Default is false."
-
     class_option :skip_minitest, type: :boolean, default: false,
       desc: "Skip using Minitest. Default is false."
 
@@ -89,7 +86,6 @@ module Barebones
     def setup_gems
       invoke :setup_minitest
       invoke :setup_factory_girl
-
       invoke :setup_resque
       invoke :setup_carrierwave
     end
