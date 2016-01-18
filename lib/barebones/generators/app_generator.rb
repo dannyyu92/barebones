@@ -85,9 +85,17 @@ module Barebones
 
     def setup_gems
       invoke :setup_minitest
+      invoke :setup_factory_girl
       #invoke :setup_sorcery
       invoke :setup_resque
       invoke :setup_carrierwave
+    end
+
+    def setup_factory_girl
+      unless options[:skip_factory_girl]
+        say "Setting up FactoryGirl gem..."
+        build :configure_factory_girl
+      end
     end
 
     def setup_minitest

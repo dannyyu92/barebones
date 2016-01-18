@@ -95,6 +95,21 @@ module Barebones
       run "cp #{environment_path}/development.rb #{environment_path}/staging.rb"
     end
 
+    def setup_factory_girl
+      class_end_line = "end\n"
+      inject_into_file "test/test_helper.rb",
+        after: class_end_line do
+          "# Minitest does not provide a way to include or "\
+          "extend a module into every test class\n"\
+          "# without re-opening the test case class\n"\
+          "module Minitest\n"\
+          "#{spaces(2)}class Test\n"\
+          "#{spaces(4)}include FactoryGirl::Syntax::Methods\n"\
+          "#{spaces(2)}end\n"\
+          "end\n"
+      end
+    end
+
     def configure_minitest
       autoload_paths_line = "config.autoload_paths << Rails.root.join('lib')\n"
       inject_into_file "config/application.rb", 
@@ -109,6 +124,10 @@ module Barebones
       inject_into_file "test/test_helper.rb",
         after: last_require do
           "require 'minitest/reporters'\n"\
+          "require 'minitest/spec'\n"\
+          "require 'mocha/mini_test'\n"\
+          "# Require all support helpers\n"\
+          "Dir[Rails.root.join('test/support/**/*.rb')].each { |f| require f }\n"\
           "Minitest::Reporters.use!(\n"\
           "#{spaces(2)}Minitest::Reporters::DefaultReporter.new,\n"\
           "#{spaces(2)}ENV,\n"\

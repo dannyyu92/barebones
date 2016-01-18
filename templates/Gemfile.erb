@@ -20,7 +20,11 @@ group :development, :test do
 <% unless options[:skip_minitest] %>
   gem "minitest-rails"
   gem "minitest-reporters"
+  gem "minitest-around"
+  gem "mocha"
 <% end %>
+  gem "factory_girl_rails", "~> 4.0"
+  gem "database_cleaner"
 end
 
 <% unless options[:skip_carrierwave] %>
