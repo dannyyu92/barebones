@@ -70,7 +70,7 @@ Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems 
 * [Configurations/Ping endpoint](templates/configs_controller.rb) to test that the API works :)
 
 #Dependencies
-Barebones requires the latest version of Ruby (2.2.3), Rails (4.2.3), and
+Barebones requires the latest version of Ruby (2.3.0), Rails (4.2.5), and
 PostgreSQL (9.4) on your local machine.
  
 #License
