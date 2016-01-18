@@ -50,6 +50,9 @@ Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems 
 ##Testing
 * [Minitest](https://github.com/blowmage/minitest-rails) for TDD/BDD
 * [Minitest Reporters](https://github.com/kern/minitest-reporters) for customizable Minitest output formats
+* [Minitest Around](https://github.com/splattael/minitest-around) for database setup/teardown
+* [Mocha](https://github.com/freerange/mocha) for mocking and stubbing
+* [Database Cleaner](https://github.com/DatabaseCleaner/database_cleaner) to ensure a clean state during tests
 
 ##API
 * [Jbuilder](https://github.com/rails/jbuilder) for building JSON structures
