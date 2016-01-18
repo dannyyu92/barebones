@@ -16,5 +16,8 @@
 /public/system
 /public/uploads
 
+# Ignore byebug files
+.byebug_history
+
 # Redis stores
 dump.rdb
