@@ -60,11 +60,11 @@ Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems 
 * [oj_mimic_json](https://github.com/ohler55/oj_mimic_json)
 * [MultiJSON](https://github.com/intridea/multi_json)
 
-##Design Patterns
+#Design Patterns
 * Services (Pre-made folder)
 * [Custom Decorator Class](templates/barebones_decorator.rb.erb) (A custom subclass of SimpleDelegator)
 
-##API
+#API
 * [Routes](templates/routes.rb.erb) with API subdomain and version namespacing
 * [ApiConstraints](templates/api_constraints.rb.erb) for API version control
 * [Configurations/Ping endpoint](templates/configs_controller.rb) to test that the API works :)
