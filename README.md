@@ -44,7 +44,6 @@ Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems 
 * [Byebug](https://github.com/deivid-rodriguez/byebug) for debugging
 * [Pry Byebug](https://github.com/deivid-rodriguez/pry-byebug) for debugging background jobs
 * [Web Console](https://github.com/rails/web-console) for debugging views
-* [Quiet Assets](https://github.com/evrone/quiet_assets) for muting the Rails asset pipeline log
 * [Awesome Print](https://github.com/michaeldv/awesome_print) for pretty printing command line objects
 
 ##Testing
@@ -70,7 +69,7 @@ Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems 
 * [Configurations/Ping endpoint](templates/configs_controller.rb) to test that the API works :)
 
 #Dependencies
-Barebones requires the latest version of Ruby (2.3.0), Rails (4.2.5), and
+Barebones requires the latest version of Ruby (2.3.1), Rails (5.0.0), and
 PostgreSQL (9.4) on your local machine.
  
 #License
