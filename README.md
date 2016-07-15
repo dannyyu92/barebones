@@ -44,7 +44,7 @@ Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems 
 * [Byebug](https://github.com/deivid-rodriguez/byebug) for debugging
 * [Pry Byebug](https://github.com/deivid-rodriguez/pry-byebug) for debugging background jobs
 * [Web Console](https://github.com/rails/web-console) for debugging views
-* [Awesome Print](https://github.com/michaeldv/awesome_print) for pretty printing command line objects
+* [Awesome Print](https://github.com/awesome-print/awesome_print) for pretty printing command line objects
 
 ##Testing
 * [Minitest](https://github.com/blowmage/minitest-rails) for TDD/BDD
