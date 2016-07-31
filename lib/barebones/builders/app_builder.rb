@@ -75,9 +75,8 @@ module Barebones
     def create_api_layouts
       empty_directory "app/views/layouts/api/v1"
       template "layout.json.jbuilder", "app/views/layouts/api/v1/application.json.jbuilder"
-      empty_directory "app/views/api/defaults"
-      create_file "app/views/api/defaults/success.json.jbuilder"
-      create_file "app/views/api/defaults/fail.json.jbuilder"
+      empty_directory "app/views/api/v1/defaults"
+      create_file "app/views/api/v1/defaults/default.json.jbuilder"
     end
 
     def customize_secrets
