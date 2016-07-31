@@ -1,19 +1,48 @@
 # <%= app_name.humanize %>
 
-### Getting Started
+## Getting Started
 
-## Setting Up Postgresql
+### Setting Up Postgresql
 `psql`  
-`CREATE ROLE <%= app_name.parameterize.underscore %>_admin`  
+`CREATE ROLE <%= app_name.parameterize.underscore %>_admin;`  
 `ALTER ROLE <%= app_name.parameterize.underscore %>_admin WITH LOGIN CREATEDB REPLICATION SUPERUSER;`  
 `\q`  
-`rake db:migrate`  
-`rake db:setup`  
 
-## Setting Up The Server
+### Installing Dependencies
+
+To run this code, you must have Rails 5.0 and Ruby 2.3.1 installed. Then you just have to run: 
+
+`bundle install`
+
+### Setting Up The Server
 
 `bundle install`  
-`rake db:setup db:migrate`  
+`rake db:setup db:migrate db:seed`  
 
-## Running The Server
+### Hosts Files
+The API uses a subdomain so if you wish to run this code locally, in your `/etc/hosts` file, you should add:  
+
+```
+127.0.0.1       api.localhost.local
+127.0.0.1       devapi.localhost.local
+```
+
+### Running The Server
 Run `rails s -p [port#]` to start the server.
+
+## The API
+
+All local requests to the API should be done through the subdomain: `http://devapi.localhost.local:{PORT#}/`  
+All API requests default to using an accept header with `application/com.<%= app_name.parameterize.underscore %>_admin.v1` unless otherwise specified.
+
+### Standard Response Structure
+
+The JSON response is modeled after the [JSend](https://labs.omniti.com/labs/jsend) Standard: 
+
+```
+{
+    status : 200,
+    data : {...}
+}
+
+```
