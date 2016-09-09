@@ -22,7 +22,6 @@ module Barebones
       keep_file "app/decorators"
       template  "barebones_decorator.rb.erb", 
         "app/decorators/#{app_name.parameterize.underscore}_decorator.rb"
-      keep_file "app/workers"
     end
 
     def config
@@ -165,7 +164,7 @@ module Barebones
     end
 
     def create_test_job
-      template "test_job.rb", "app/workers/test_job.rb"
+      template "test_job.rb", "app/jobs/test_job.rb"
     end
 
     def create_resque_rake_task
