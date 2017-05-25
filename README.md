@@ -18,6 +18,7 @@ Then run:
 If you don't like using any of the below gems or configurations for whatever reason, you can skip them:
 * --skip-api
 * --skip-resque
+* --skip-sidekiq
 * --skip-minitest
 * --skip-factory-girl
 * --skip-carrierwave
@@ -34,6 +35,7 @@ Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems 
 * [MiniMagick](https://github.com/minimagick/minimagick) for image cropping/resizing and all that good stuff
 
 ### Background Processing
+* [Sidekiq](https://github.com/mperham/sidekiq) for background workers. This is the default option.
 * [Resque](https://github.com/resque/resque) for background workers
 * [Resque-Scheduler](https://github.com/resque/resque-scheduler) for queueing workers in the future
 
