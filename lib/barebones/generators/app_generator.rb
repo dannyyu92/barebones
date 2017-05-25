@@ -9,8 +9,11 @@ module Barebones
     class_option :skip_api, type: :boolean, default: false, 
       desc: "Skip creating an API. Default is false."
 
-    class_option :skip_resque, type: :boolean, default: false,
-      desc: "Skip using Resque. Default is false."
+    class_option :skip_resque, type: :boolean, default: true,
+      desc: "Skip using Resque. Default is true."
+
+    class_option :skip_sidekiq, type: :boolean, default: false, 
+      desc: "Skip using Sidekiq. Default is false."
 
     class_option :skip_minitest, type: :boolean, default: false,
       desc: "Skip using Minitest. Default is false."
@@ -86,6 +89,7 @@ module Barebones
       invoke :setup_minitest
       invoke :setup_factory_girl
       invoke :setup_resque
+      invoke :setup_sidekiq
       invoke :setup_carrierwave
     end
 
@@ -106,11 +110,21 @@ module Barebones
     def setup_resque
       unless options[:skip_resque]
         say "Setting up Resque/Redis gems..."
-        build :configure_active_job
+        build :configure_active_job_for_resque
         build :configure_redis
         build :configure_resque
         build :create_test_job
         build :create_resque_rake_task
+      end
+    end
+
+    def setup_sidekiq
+      unless options[:skip_sidekiq]
+        say "Setting up Resque/Redis gems..."
+        build :configure_active_job_for_sidekiq
+        build :configure_redis
+        build :configure_sidekiq
+        build :create_test_job
       end
     end
 

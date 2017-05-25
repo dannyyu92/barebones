@@ -44,6 +44,12 @@ gem "resque-scheduler"
 gem 'sinatra', github: 'sinatra/sinatra', branch: 'master'
 <% end %>
 
+<% unless options[:skip_sidekiq] %>
+# Background Processing
+gem "sidekiq"
+# gem "sidekiq-scheduler"
+<% end %>
+
 # Database
 gem "pg", "~> 0.18.4"
 

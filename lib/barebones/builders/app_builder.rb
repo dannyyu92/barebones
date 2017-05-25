@@ -146,12 +146,21 @@ module Barebones
         
     end    
 
-    def configure_active_job
+    def configure_active_job_for_resque
       application_class_end_line = "#{spaces(2)}end\nend"
       inject_into_file "config/application.rb", 
         before: application_class_end_line do
           "\n#{spaces(4)}# Set ActiveJob to use Resque\n"\
           "#{spaces(4)}config.active_job.queue_adapter = :resque\n"
+      end
+    end
+
+    def configure_active_job_for_sidekiq
+      application_class_end_line = "#{spaces(2)}end\nend"
+      inject_into_file "config/application.rb", 
+        before: application_class_end_line do
+          "\n#{spaces(4)}# Set ActiveJob to use Sidekiq\n"\
+          "#{spaces(4)}config.active_job.queue_adapter = :sidekiq\n"
       end
     end
 
@@ -161,6 +170,10 @@ module Barebones
 
     def configure_resque
       template "resque.rb", "config/initializers/resque.rb"
+    end
+
+    def configure_sidekiq
+      template "sidekiq.rb", "config/initializers/sidekiq.rb"
     end
 
     def create_test_job
