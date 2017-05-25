@@ -37,6 +37,10 @@ module Barebones
       create_file ".ruby-version", "#{Barebones::RUBY_VERSION}"
     end
 
+    def set_gemset
+      create_file ".ruby-gemset", "#{app_name.parameterize.underscore}"
+    end
+
     def setup_autoload_paths
       application_class_end_line = "#{spaces(2)}end\nend"
       inject_into_file "config/application.rb", 
@@ -165,7 +169,7 @@ module Barebones
     end
 
     def configure_redis
-      template "redis.rb", "config/initializers/redis.rb"
+      template "redis.rb.erb", "config/initializers/redis.rb"
     end
 
     def configure_resque

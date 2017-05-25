@@ -4,6 +4,6 @@ class TestJob < ApplicationJob
   queue_as :default
  
   def perform
-    puts "Resque is working."
+    puts "ActiveJob is working."
   end
 end

@@ -1,4 +1,5 @@
-redis_db_0 = Redis.new(
+<% unless options[:skip_resque] %>
+$redis_db_0 = Redis.new(
   :url => Rails.application.secrets.redis_url,
   :port => Rails.application.secrets.redis_port,
   :db => Rails.application.secrets.redis_db,
@@ -8,6 +9,7 @@ $redis_default = Redis::Namespace.new(
   Rails.application.secrets.redis_namespace_default, 
   :redis => redis_db_0
 )
+<% end %>
 
 # http://www.rubydoc.info/github/redis/redis-rb/Redis/Client
 # :url => lambda { ENV["REDIS_URL"] },
@@ -24,3 +26,11 @@ $redis_default = Redis::Namespace.new(
 # :tcp_keepalive => 0,
 # :reconnect_attempts => 1,
 # :inherit_socket => false
+
+<% unless options[:skip_sidekiq] %>
+$redis = Redis.new(
+  :url => Rails.application.secrets.redis_url,
+  :port => Rails.application.secrets.redis_port,
+  :db => Rails.application.secrets.redis_db,
+)
+<% end %>

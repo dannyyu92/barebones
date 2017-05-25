@@ -39,6 +39,7 @@ module Barebones
     def setup_ruby
       say "Setting ruby version..."
       build :set_ruby_version
+      build :set_gemset
     end
 
     def setup_routes
@@ -120,7 +121,7 @@ module Barebones
 
     def setup_sidekiq
       unless options[:skip_sidekiq]
-        say "Setting up Resque/Redis gems..."
+        say "Setting up Sidekiq/Redis gems..."
         build :configure_active_job_for_sidekiq
         build :configure_redis
         build :configure_sidekiq
