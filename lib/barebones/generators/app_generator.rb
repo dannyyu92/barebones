@@ -9,8 +9,11 @@ module Barebones
     class_option :skip_api, type: :boolean, default: false, 
       desc: "Skip creating an API. Default is false."
 
-    class_option :skip_resque, type: :boolean, default: false,
-      desc: "Skip using Resque. Default is false."
+    class_option :skip_resque, type: :boolean, default: true,
+      desc: "Skip using Resque. Default is true."
+
+    class_option :skip_sidekiq, type: :boolean, default: false, 
+      desc: "Skip using Sidekiq. Default is false."
 
     class_option :skip_minitest, type: :boolean, default: false,
       desc: "Skip using Minitest. Default is false."
@@ -25,6 +28,7 @@ module Barebones
       say "Invoking customizations..."
       invoke :setup_ruby
       invoke :configure_app
+      invoke :setup_webserver
       invoke :setup_routes
       invoke :setup_api
       invoke :setup_secrets
@@ -36,16 +40,22 @@ module Barebones
     def setup_ruby
       say "Setting ruby version..."
       build :set_ruby_version
-    end
-
-    def setup_routes
-      say "Setting up custom routes..."
-      build :customize_routes
+      build :set_gemset
     end
 
     def configure_app
       say "Configuring application..."
       build :setup_autoload_paths
+    end
+
+    def setup_webserver
+      say "Setting up webserver..."
+      invoke :setup_puma
+    end
+
+    def setup_routes
+      say "Setting up custom routes..."
+      build :customize_routes
     end
 
     def setup_api
@@ -86,6 +96,7 @@ module Barebones
       invoke :setup_minitest
       invoke :setup_factory_girl
       invoke :setup_resque
+      invoke :setup_sidekiq
       invoke :setup_carrierwave
     end
 
@@ -106,11 +117,21 @@ module Barebones
     def setup_resque
       unless options[:skip_resque]
         say "Setting up Resque/Redis gems..."
-        build :configure_active_job
+        build :configure_active_job_for_resque
         build :configure_redis
         build :configure_resque
         build :create_test_job
         build :create_resque_rake_task
+      end
+    end
+
+    def setup_sidekiq
+      unless options[:skip_sidekiq]
+        say "Setting up Sidekiq/Redis gems..."
+        build :configure_active_job_for_sidekiq
+        build :configure_redis
+        build :configure_sidekiq
+        build :create_test_job
       end
     end
 
@@ -119,6 +140,11 @@ module Barebones
         say "Setting up Carrierwave gem..."
         build :configure_carrierwave
       end
+    end
+
+    def setup_puma
+      say "Setting up Puma..."
+      build :configure_puma
     end
 
     def outro

@@ -37,6 +37,10 @@ module Barebones
       create_file ".ruby-version", "#{Barebones::RUBY_VERSION}"
     end
 
+    def set_gemset
+      create_file ".ruby-gemset", "#{app_name.parameterize.underscore}"
+    end
+
     def setup_autoload_paths
       application_class_end_line = "#{spaces(2)}end\nend"
       inject_into_file "config/application.rb", 
@@ -146,7 +150,7 @@ module Barebones
         
     end    
 
-    def configure_active_job
+    def configure_active_job_for_resque
       application_class_end_line = "#{spaces(2)}end\nend"
       inject_into_file "config/application.rb", 
         before: application_class_end_line do
@@ -155,12 +159,25 @@ module Barebones
       end
     end
 
+    def configure_active_job_for_sidekiq
+      application_class_end_line = "#{spaces(2)}end\nend"
+      inject_into_file "config/application.rb", 
+        before: application_class_end_line do
+          "\n#{spaces(4)}# Set ActiveJob to use Sidekiq\n"\
+          "#{spaces(4)}config.active_job.queue_adapter = :sidekiq\n"
+      end
+    end
+
     def configure_redis
-      template "redis.rb", "config/initializers/redis.rb"
+      template "redis.rb.erb", "config/initializers/redis.rb"
     end
 
     def configure_resque
       template "resque.rb", "config/initializers/resque.rb"
+    end
+
+    def configure_sidekiq
+      template "sidekiq.rb", "config/initializers/sidekiq.rb"
     end
 
     def create_test_job
@@ -173,6 +190,11 @@ module Barebones
 
     def configure_carrierwave
       template "carrierwave.rb", "config/initializers/carrierwave.rb"
+    end
+
+    def configure_puma
+      template "Procfile", "Procfile"
+      template "puma.rb", "config/puma.rb", force: true
     end
 
   end
