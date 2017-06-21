@@ -29,6 +29,10 @@ For example:
 
 ## Gemfile
 Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems such as:
+### Webserver
+* [Puma](https://github.com/puma/puma) for our default concurrent webserver. Configured to spawn on free Heroku instances [out of the box](config/puma.rb).
+
+
 ### File Uploading
 * [Carrierwave](https://github.com/carrierwaveuploader/carrierwave) for file uploading
 * [Fog](https://github.com/fog/fog) for AWS/Google cloud storage

@@ -192,5 +192,10 @@ module Barebones
       template "carrierwave.rb", "config/initializers/carrierwave.rb"
     end
 
+    def configure_puma
+      template "Procfile", "Procfile"
+      template "puma.rb", "config/puma.rb", force: true
+    end
+
   end
 end

@@ -28,6 +28,7 @@ module Barebones
       say "Invoking customizations..."
       invoke :setup_ruby
       invoke :configure_app
+      invoke :setup_webserver
       invoke :setup_routes
       invoke :setup_api
       invoke :setup_secrets
@@ -42,14 +43,19 @@ module Barebones
       build :set_gemset
     end
 
-    def setup_routes
-      say "Setting up custom routes..."
-      build :customize_routes
-    end
-
     def configure_app
       say "Configuring application..."
       build :setup_autoload_paths
+    end
+
+    def setup_webserver
+      say "Setting up webserver..."
+      invoke :setup_puma
+    end
+
+    def setup_routes
+      say "Setting up custom routes..."
+      build :customize_routes
     end
 
     def setup_api
@@ -134,6 +140,11 @@ module Barebones
         say "Setting up Carrierwave gem..."
         build :configure_carrierwave
       end
+    end
+
+    def setup_puma
+      say "Setting up Puma..."
+      build :configure_puma
     end
 
     def outro
