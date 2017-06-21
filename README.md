@@ -30,7 +30,7 @@ For example:
 ## Gemfile
 Barebones' [Gemfile](templates/Gemfile.erb) includes various preconfigured gems such as:
 ### Webserver
-* [Puma](https://github.com/puma/puma) for our default concurrent webserver. Configured to spawn on free Heroku instances [out of the box](config/puma.rb).
+* [Puma](https://github.com/puma/puma) for our default concurrent webserver. Configured to spawn on free Heroku instances [out of the box](templates/puma.rb#L63).
 
 
 ### File Uploading
