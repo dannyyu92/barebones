@@ -10,7 +10,7 @@
 
 ### Installing Dependencies
 
-To run this code, you must have Rails 5.0 and Ruby 2.3.1 installed. Then you just have to run: 
+To run this code, you must have Rails <%= Barebones::RAILS_VERSION %> and Ruby <%= Barebones::RUBY_VERSION %> installed. Then you just have to run: 
 
 `bundle install`
 
@@ -33,7 +33,7 @@ Run `rails s -p [port#]` to start the server.
 ## The API
 
 All local requests to the API should be done through the subdomain: `http://devapi.localhost.local:{PORT#}/`  
-All API requests default to using an accept header with `application/com.<%= app_name.parameterize.underscore %>_admin.v1` unless otherwise specified.
+All API requests default to using an accept header with `application/com.<%= app_name.parameterize.underscore %>.v1` unless otherwise specified.
 
 ### Standard Response Structure
 
